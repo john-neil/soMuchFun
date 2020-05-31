@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>React Demo</title>
+    <style media="screen">
+      .messageBox {
+        border: 1px solid;
+        margin: 1em;
+        padding: 2em;
+      }
+
+      .error {
+        border-color: red;
+        background-color: #eebbbb;
+      }
+
+      .success {
+        border-color: blue;
+        background-color: #bbbbee;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main id="content"></main>
+
+    <script src="https://unpkg.com/babel-standalone"></script>
+    <script type="text/javascript" src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+
+    <script type="text/babel" data-presents="react">
+
+      class NameInput extends React.Component {
+        // moved state out of MessageBox, but still need to handle it here
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            message: {
+              type: undefined,
+              body: undefined
+            }
+          }
+
+          this.buttonClicked = this.buttonClicked.bind(this);
+          // binding??  every time you write an event handler
+        }
+
+        buttonClicked(evt) {
+          let name = this.refs.nameInput.value;
+
+          this.setState ({
+            message: {
+              type: name ? "success" : "error",
+                // turn area operator - ? and :
+              body: name ? "Welcome to React, " + name : "You must enter a name!"
+            }
+          });
+        }
+
+        render() {
+
+          let msg = this.state.message;
+          return ( // problem was lack of parenthesis
+            <div>
+              <label>Name: <input ref="nameInput" type="text" /></label>
+              <button onClick={this.buttonClicked}>Click me!</button>
+
+              <MessageBox type={msg.type} message={msg.body}/>
+            </div> // send in ^^ type    and     ^^ this is message body
+          ) // interesting because we aren't using text, we're using all stuff from last time
+        }
+      }
+
+      class MessageBox extends React.Component {
+        render () {
+          return ( // below, more than one class . . . and || means or
+            <div className={"messageBox " + (this.props.type || "hidden")}>
+              {this.props.message}
+            </div>
+          )
+        }
+      }
+      // benefit of react - we can test functions like MessageBox independently
+      // and make changes without worrying about other parts of the app
+
+
+        ReactDOM.render(<NameInput />, document.getElementById('content')); // what is document, content etc? //
+                  // ^^ ABOVE IS JSX, WRITING HTLM IN JS
+                  // This is where constructors are called
+    </script>
+  </body>
+</html>
