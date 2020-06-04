@@ -11,9 +11,9 @@ module.exports = {
       test: /\.js$/, // "regular expression" which says "anything that ends with a literal .js and $ means end of filename"
       exclude: /node_modules/,
       use: {
-        loader: 'babel-loader',
+        loader: 'babel-loader', //maybe this is the problem?
         options: {
-          presets: ['react']
+          presets: ['react'] // or this?
         }
       }
     }]
