@@ -1,5 +1,16 @@
-import 'react-dom' // maybe this is the problem? did I install correctly?
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ExampleWork from './example-work'
 
-console.log("loaded react-dom");
+const myWork = [
+  {
+    'title': "Zoom",
+    'image': {
+      'desc': "example screenshot of a project involving code",
+      'src': "images/myVacationProperty.jpeg",
+      'comment': ""
+    }
+  }
+]
 
-console.log("Webpack works")
+ReactDOM.render(<ExampleWork work={myWork}/>, document.getElementById('example-work'));
