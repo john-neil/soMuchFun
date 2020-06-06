@@ -6,11 +6,12 @@ class ExampleWork extends React.Component {
     return (
       <section className="section section--alignCentered section--description">
 
-        { this.props.work.map ( (example, idx) => {
-          return (
-            <ExampleWorkBubble example={example} key={idx} />
-            )
-          })
+        {
+            this.props.work.map ((example, idx) => {
+              return (
+                    <ExampleWorkBubble example={example} key={idx} />
+                )
+            })
         }
 
 
