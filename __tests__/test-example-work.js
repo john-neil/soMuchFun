@@ -16,16 +16,7 @@ const myWork = [
         'src': "images/myVacationProperty.jpeg",
         'comment': ""
       }
-    },
-    {
-      'title': "Zoom1",
-      'image': {
-        'desc': "screenshot of a project involving code",
-        'src': "images/ex1.png",
-        'comment': ""
-      }
     }
-
 ];
 
 describe("ExampleWork component", () =>{
@@ -41,7 +32,7 @@ describe("ExampleWork component", () =>{
 });
 
 describe("ExampleWorkBubble component", () => {
-  let component = shallow(<ExampleWorkBubble example={myWork[1]}/>); // problem is with data structures . . . need to also get it to grab desc and source
+  let component = shallow(<ExampleWorkBubble example={myWork[0]}/>); // problem is with data structures . . . need to also get it to grab desc and source
 
   let images = component.find("img");
 
@@ -49,10 +40,13 @@ describe("ExampleWorkBubble component", () => {
     expect(images.length).toEqual(1);
   });
 
+  // to troubleshoot - https://stackoverflow.com/questions/19702782/how-to-fix-uncaught-typeerror-cannot-read-property-prototype-of-undefined
+
+
   // let srcs = component.find("srcs")
 
-  //it("Should have the image src set correctly", () => {
-  //  .getElementById("src").toEqual(myWork[1].image.src);
-  //  expect(images.props('src')).toEqual(myWork[0].image.src);
-  // })
+  it("Should have the image src set correctly", () => {
+  //  .getElementById("src").toEqual(myWork[0].image.src); (tried this and failed)
+    expect(images.props("src")).toEqual(myWork[0].image.src); // problem here is that images.props('src') is an object, not a string.  apparently .props('src') doesn't direct the test to the src 
+   })
 })
