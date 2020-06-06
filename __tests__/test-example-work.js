@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExampleWork, { ExampleWorkBubble } from '../js/example-work';
+import ExampleWork from '../js/example-work';
+import ExampleWorkBubble from '../js/example-work-bubble'
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16.3';
@@ -8,7 +9,6 @@ import Adapter from 'enzyme-adapter-react-16.3';
 Enzyme.configure({ adapter: new Adapter() });
 
 const myWork = [
-
     {
       'title': "Zoom",
       'image': {
@@ -34,10 +34,10 @@ describe("ExampleWork component", () =>{
 describe("ExampleWorkBubble component", () => {
   let component = shallow(<ExampleWorkBubble example={myWork[0]}/>); // problem is with data structures . . . need to also get it to grab desc and source
 
-  let images = component.find("img");
+  let image = component.find("img");
 
   it("Should contain a single 'img' element", () => {
-    expect(images.length).toEqual(1);
+    expect(image.length).toEqual(1);
   });
 
   // to troubleshoot - https://stackoverflow.com/questions/19702782/how-to-fix-uncaught-typeerror-cannot-read-property-prototype-of-undefined
@@ -47,6 +47,6 @@ describe("ExampleWorkBubble component", () => {
 
   it("Should have the image src set correctly", () => {
   //  .getElementById("src").toEqual(myWork[0].image.src); (tried this and failed)
-    expect(images.props("src")).toEqual(myWork[0].image.src); // problem here is that images.props('src') is an object, not a string.  apparently .props('src') doesn't direct the test to the src 
+    expect(image.props().src).toEqual(myWork[0].image.src); // problem here is that images.props('src') is an object, not a string.  apparently .props('src') doesn't direct the test to the src
    })
 })
