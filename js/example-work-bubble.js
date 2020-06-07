@@ -6,7 +6,6 @@ class ExampleWorkBubble extends React.Component {
     return (
         <div className="section__exampleWrapper">
           <div className="section__example">
-            // "example screenshot of a project involving code"
             <img
                 className="section__exampleImage"
                 alt={ example.image.desc }
