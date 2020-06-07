@@ -10,7 +10,7 @@ const myWork = [
       'src': "images/myVacationProperty.jpeg",
       'comment': ""
     }
-  }
+  },
 ]
 
 ReactDOM.render(<ExampleWork work={myWork}/>, document.getElementById('example-work'));
