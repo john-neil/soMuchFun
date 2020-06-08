@@ -1,10 +1,12 @@
 import React from 'react';
 
 class ExampleWorkBubble extends React.Component {
+
   render() {
     let example = this.props.example; // to shorten the code below
     return (
-        <div className="section__exampleWrapper">
+        <div className="section__exampleWrapper"
+          onClick={ (evt) => this.props.openModal(evt, example) }>
           <div className="section__example">
             <img
                 className="section__exampleImage"
