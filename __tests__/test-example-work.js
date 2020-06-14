@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ExampleWork from '../js/example-work';
-import ExampleWorkBubble from '../js/example-work-bubble'
+import ExampleWorkBubble from '../js/example-work-bubble';
+// import ExampleWorkModal from '../js/example-work-modal';
 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16.3';
@@ -10,7 +11,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const myWork = [
     {
-      'title': "Zoom",
+      'title': "Click Here!",
       'image': {
         'desc': "example screenshot of a project involving code",
         'src': "images/myVacationProperty.jpeg",
