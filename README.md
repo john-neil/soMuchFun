@@ -1,5 +1,1 @@
-# soMuchFun
-
-Incorporating the principles of CI/CD into a simple React portfolio.  
-
-# adding stuff SSH
+Toy project incorporating the principles of CI/CD into a serverless React portfolio.  
